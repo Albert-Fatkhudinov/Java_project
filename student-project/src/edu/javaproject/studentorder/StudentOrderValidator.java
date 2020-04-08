@@ -30,33 +30,19 @@ public class StudentOrderValidator {
     }
 
     public void checkAll() {
-
-        while (true) {
-            StudentOrder studentOrder = readStudentOrder();
-            if (studentOrder == null) {
-                break;
-            }
-            AnswerCityRegister cityAnswer = checkCityRegister(studentOrder);
-            if (!cityAnswer.success) {
-                //continue;
-                break;
-            }
-            AnswerWedding weddingAnswer = checkWedding(studentOrder);
-            AnswerChildren childrenAnswer = checkChildren(studentOrder);
-            AnswerStudent studentAnswer = checkStudent(studentOrder);
-
-            sendMail(studentOrder);
-
-
-
+        StudentOrder[] studentOrders = readStudentOrders();
+        for (StudentOrder studentOrder : studentOrders) {
+            System.out.println();
+            checkOneOrder(studentOrder);
         }
-
-
     }
 
-    public StudentOrder readStudentOrder() {
-        StudentOrder studentOrder = new StudentOrder();
-        return studentOrder;
+    public StudentOrder[] readStudentOrders() {
+        StudentOrder[] studentOrders = new StudentOrder[3];
+        for (int i = 0; i < studentOrders.length; i++) {
+            studentOrders[i] = SaveStudentOrder.buildStudentOrder(i);
+        }
+        return studentOrders;
     }
 
 
@@ -80,4 +66,14 @@ public class StudentOrderValidator {
         mailSender.sendMail(studentOrder);
     }
 
+    public void checkOneOrder(StudentOrder studentOrder) {
+
+        AnswerCityRegister cityAnswer = checkCityRegister(studentOrder);
+
+        AnswerWedding weddingAnswer = checkWedding(studentOrder);
+        AnswerChildren childrenAnswer = checkChildren(studentOrder);
+        AnswerStudent studentAnswer = checkStudent(studentOrder);
+
+        sendMail(studentOrder);
+    }
 }
