@@ -1,7 +1,5 @@
 package edu.javaproject.studentorder.domain;
 
-import edu.javaproject.studentorder.other.Adult;
-
 public class StudentOrder {
 
    private long studentOrderID;

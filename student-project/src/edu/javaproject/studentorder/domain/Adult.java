@@ -1,4 +1,4 @@
-package edu.javaproject.studentorder.other;
+package edu.javaproject.studentorder.domain;
 
 import edu.javaproject.studentorder.domain.Person;
 
@@ -14,14 +14,14 @@ public class Adult extends Person {
     private String studentId;
 
     public Adult() {
-        System.out.println("Adult is created");
+
+    }
+
+    public Adult(String surName, String givenName, String patronymic, LocalDate dateOfBirth) {
+        super(surName, givenName, patronymic, dateOfBirth);
     }
 
 
-    @Override
-    public String getPersonString() {
-        return surName + " " + givenName + ": " + passportNumber;
-    }
 
     public String getPassportSerial() {
         return passportSerial;
