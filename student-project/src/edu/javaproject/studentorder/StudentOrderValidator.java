@@ -1,6 +1,10 @@
 package edu.javaproject.studentorder;
 
 import edu.javaproject.studentorder.domain.*;
+import edu.javaproject.studentorder.domain.children.AnswerChildren;
+import edu.javaproject.studentorder.domain.register.AnswerCityRegister;
+import edu.javaproject.studentorder.domain.student.AnswerStudent;
+import edu.javaproject.studentorder.domain.wedding.AnswerWedding;
 import edu.javaproject.studentorder.mail.MailSender;
 import edu.javaproject.studentorder.validator.ChildrenValidator;
 import edu.javaproject.studentorder.validator.CityRegisterValidator;
@@ -32,7 +36,7 @@ public class StudentOrderValidator {
     public void checkAll() {
         StudentOrder[] studentOrders = readStudentOrders();
         for (StudentOrder studentOrder : studentOrders) {
-            System.out.println();
+
             checkOneOrder(studentOrder);
         }
     }
@@ -70,10 +74,9 @@ public class StudentOrderValidator {
 
         AnswerCityRegister cityAnswer = checkCityRegister(studentOrder);
 
-        AnswerWedding weddingAnswer = checkWedding(studentOrder);
-        AnswerChildren childrenAnswer = checkChildren(studentOrder);
-        AnswerStudent studentAnswer = checkStudent(studentOrder);
-
-        sendMail(studentOrder);
+        //AnswerWedding weddingAnswer = checkWedding(studentOrder);
+        //AnswerChildren childrenAnswer = checkChildren(studentOrder);
+        //AnswerStudent studentAnswer = checkStudent(studentOrder);
+        //sendMail(studentOrder);
     }
 }
