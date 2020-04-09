@@ -4,10 +4,10 @@ import edu.javaproject.studentorder.domain.Child;
 import edu.javaproject.studentorder.domain.Person;
 import edu.javaproject.studentorder.domain.register.AnswerCityRegister;
 import edu.javaproject.studentorder.domain.register.AnswerCityRegisterItem;
-
 import edu.javaproject.studentorder.domain.StudentOrder;
 import edu.javaproject.studentorder.domain.register.CityRegisterResponse;
 import edu.javaproject.studentorder.exception.CityRegisterException;
+import edu.javaproject.studentorder.exception.TransportException;
 import edu.javaproject.studentorder.validator.register.CityRegisterChecker;
 import edu.javaproject.studentorder.validator.register.FakeCityRegisterChecker;
 
@@ -15,10 +15,7 @@ import java.util.List;
 
 public class  CityRegisterValidator {
 
-    private String hostName;
-    private int port;
-    private String login;
-    private String password;
+    public static final String IN_CODE = "NO_GRN";
 
     private CityRegisterChecker personChecker;
 
@@ -42,12 +39,32 @@ public class  CityRegisterValidator {
 
     private AnswerCityRegisterItem checkPerson(Person person) {
 
+        AnswerCityRegisterItem.CityStatus status;
+        AnswerCityRegisterItem.CityError error = null;
+
         try {
-            CityRegisterResponse cans = personChecker.checkPerson(person);
+            CityRegisterResponse tmp = personChecker.checkPerson(person);
+            status = tmp.isExisting() ?
+                    AnswerCityRegisterItem.CityStatus.YES :
+                    AnswerCityRegisterItem.CityStatus.NO;
         } catch (CityRegisterException ex) {
-            ex.printStackTrace();
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(ex.getCode(), ex.getMessage());
+        } catch (TransportException ex) {
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace(System.out);
+            status = AnswerCityRegisterItem.CityStatus.ERROR;
+            error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         }
-        return null;
+
+        AnswerCityRegisterItem answerCityRegisterItem
+                = new AnswerCityRegisterItem(status, person, error);
+
+        return answerCityRegisterItem;
     }
 
 }
