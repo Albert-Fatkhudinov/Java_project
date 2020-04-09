@@ -5,8 +5,9 @@ public class Address {
     private String postCode;
     private String street;
     private String building;
-    private String apartment;
     private String extension;
+    private String apartment;
+
 
     public Address() {
     }
