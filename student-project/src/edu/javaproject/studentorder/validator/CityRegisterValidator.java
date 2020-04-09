@@ -11,7 +11,7 @@ import edu.javaproject.studentorder.exception.TransportException;
 import edu.javaproject.studentorder.validator.register.CityRegisterChecker;
 import edu.javaproject.studentorder.validator.register.FakeCityRegisterChecker;
 
-import java.util.List;
+
 
 public class  CityRegisterValidator {
 
