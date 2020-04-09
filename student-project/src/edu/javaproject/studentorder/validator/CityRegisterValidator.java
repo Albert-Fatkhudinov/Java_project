@@ -1,9 +1,12 @@
 package edu.javaproject.studentorder.validator;
 
 import edu.javaproject.studentorder.domain.Child;
+import edu.javaproject.studentorder.domain.Person;
 import edu.javaproject.studentorder.domain.register.AnswerCityRegister;
-import edu.javaproject.studentorder.domain.register.CityRegisterCheckerResponse;
+import edu.javaproject.studentorder.domain.register.AnswerCityRegisterItem;
+
 import edu.javaproject.studentorder.domain.StudentOrder;
+import edu.javaproject.studentorder.domain.register.CityRegisterResponse;
 import edu.javaproject.studentorder.exception.CityRegisterException;
 import edu.javaproject.studentorder.validator.register.CityRegisterChecker;
 import edu.javaproject.studentorder.validator.register.FakeCityRegisterChecker;
@@ -24,22 +27,27 @@ public class  CityRegisterValidator {
     }
 
     public AnswerCityRegister checkCityRegister(StudentOrder studentOrder) {
-        try {
-            CityRegisterCheckerResponse hans = personChecker.checkPerson(studentOrder.getHusband());
-            CityRegisterCheckerResponse wans = personChecker.checkPerson(studentOrder.getWife());
-
-            List<Child> childList = studentOrder.getChildren();
-            for (Child child : childList) {
-                CityRegisterCheckerResponse cans = personChecker.checkPerson(child);
-            }
-
-        } catch (CityRegisterException exception) {
-            exception.printStackTrace(System.out);
-        }
-
         AnswerCityRegister answerCityRegister = new AnswerCityRegister();
 
+        answerCityRegister.addItem(checkPerson(studentOrder.getHusband()));
+        answerCityRegister.addItem(checkPerson(studentOrder.getWife()));
+
+
+        for (Child child : studentOrder.getChildren()) {
+            answerCityRegister.addItem(checkPerson(child));
+        }
+
         return answerCityRegister;
+    }
+
+    private AnswerCityRegisterItem checkPerson(Person person) {
+
+        try {
+            CityRegisterResponse cans = personChecker.checkPerson(person);
+        } catch (CityRegisterException ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
 }

@@ -2,8 +2,9 @@ package edu.javaproject.studentorder.validator.register;
 
 import edu.javaproject.studentorder.domain.Adult;
 import edu.javaproject.studentorder.domain.Child;
-import edu.javaproject.studentorder.domain.register.CityRegisterCheckerResponse;
+
 import edu.javaproject.studentorder.domain.Person;
+import edu.javaproject.studentorder.domain.register.CityRegisterResponse;
 import edu.javaproject.studentorder.exception.CityRegisterException;
 
 public class FakeCityRegisterChecker implements CityRegisterChecker {
@@ -15,9 +16,9 @@ public class FakeCityRegisterChecker implements CityRegisterChecker {
     private static final String ERROR_1 = "1002";
     private static final String ERROR_2 = "2002";
 
-    public CityRegisterCheckerResponse checkPerson(Person person) throws CityRegisterException {
+    public CityRegisterResponse checkPerson(Person person) throws CityRegisterException {
 
-        CityRegisterCheckerResponse response = new CityRegisterCheckerResponse();
+        CityRegisterResponse response = new CityRegisterResponse();
         if (person instanceof Adult) {
             Adult adult = (Adult) person;
             String passportNumber = adult.getPassportSerial();
