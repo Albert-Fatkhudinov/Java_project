@@ -1,11 +1,14 @@
 package edu.javaproject.studentorder.validator;
 
+import edu.javaproject.studentorder.domain.Child;
 import edu.javaproject.studentorder.domain.register.AnswerCityRegister;
 import edu.javaproject.studentorder.domain.register.CityRegisterCheckerResponse;
 import edu.javaproject.studentorder.domain.StudentOrder;
 import edu.javaproject.studentorder.exception.CityRegisterException;
 import edu.javaproject.studentorder.validator.register.CityRegisterChecker;
 import edu.javaproject.studentorder.validator.register.FakeCityRegisterChecker;
+
+import java.util.List;
 
 public class  CityRegisterValidator {
 
@@ -24,7 +27,12 @@ public class  CityRegisterValidator {
         try {
             CityRegisterCheckerResponse hans = personChecker.checkPerson(studentOrder.getHusband());
             CityRegisterCheckerResponse wans = personChecker.checkPerson(studentOrder.getWife());
-            CityRegisterCheckerResponse child = personChecker.checkPerson(studentOrder.getChild());
+
+            List<Child> childList = studentOrder.getChildren();
+            for (Child child : childList) {
+                CityRegisterCheckerResponse cans = personChecker.checkPerson(child);
+            }
+
         } catch (CityRegisterException exception) {
             exception.printStackTrace(System.out);
         }

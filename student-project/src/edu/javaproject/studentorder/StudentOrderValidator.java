@@ -11,6 +11,9 @@ import edu.javaproject.studentorder.validator.CityRegisterValidator;
 import edu.javaproject.studentorder.validator.StudentValidator;
 import edu.javaproject.studentorder.validator.WeddingValidator;
 
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class StudentOrderValidator {
 
@@ -34,17 +37,17 @@ public class StudentOrderValidator {
     }
 
     public void checkAll() {
-        StudentOrder[] studentOrders = readStudentOrders();
+        List<StudentOrder> studentOrders = readStudentOrders();
         for (StudentOrder studentOrder : studentOrders) {
-
             checkOneOrder(studentOrder);
         }
     }
 
-    public StudentOrder[] readStudentOrders() {
-        StudentOrder[] studentOrders = new StudentOrder[3];
-        for (int i = 0; i < studentOrders.length; i++) {
-            studentOrders[i] = SaveStudentOrder.buildStudentOrder(i);
+    public List<StudentOrder> readStudentOrders() {
+        List<StudentOrder> studentOrders = new LinkedList<>();
+        for (int i = 0; i < 5; i++) {
+            StudentOrder studentOrder = SaveStudentOrder.buildStudentOrder(i);
+            studentOrders.add(studentOrder);
         }
         return studentOrders;
     }
