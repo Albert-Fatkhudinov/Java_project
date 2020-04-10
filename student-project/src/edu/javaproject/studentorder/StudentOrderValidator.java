@@ -17,11 +17,11 @@ import java.util.List;
 
 public class StudentOrderValidator {
 
-    private CityRegisterValidator cityRegisterVal;
-    private WeddingValidator weddingVal;
-    private ChildrenValidator childrenVal;
-    private StudentValidator studentVal;
-    private MailSender mailSender;
+    private final CityRegisterValidator cityRegisterVal;
+    private final WeddingValidator weddingVal;
+    private final ChildrenValidator childrenVal;
+    private final StudentValidator studentVal;
+    private final MailSender mailSender;
 
     public StudentOrderValidator() {
         cityRegisterVal = new CityRegisterValidator();
