@@ -5,6 +5,11 @@ INSERT INTO jc_street (street_code, street_name) VALUES
 (4, 'улица Гороховая'),
 (5, 'проспект Ветеранов');
 
+INSERT INTO TABLE jc_university (university_id, university_name) VALUES
+(1, 'Санкт-Петербурский Государственный Универститет'),
+(2, 'Московский Государственный Универститет'),
+(3, 'Альметьевский Государственный Институт')ж
+
 
 INSERT INTO jc_country_struct (area_id, area_name) VALUES
 ('010000000000', 'Город'),
@@ -31,8 +36,7 @@ INSERT INTO jc_country_struct (area_id, area_name) VALUES
 ('020020020001', 'Край Область 2 Район 2 Поселение 1'),
 ('020020020002', 'Край Область 2 Район 2 Поселение 2');
 
-INSERT INTO jc_passport_office (p_office_id, p_office_area_id, p_office_name)
-VALUES
+INSERT INTO jc_passport_office (p_office_id, p_office_area_id, p_office_name) VALUES
 (1, '010010000000', 'Паспортный стол района 1 города'),
 (2, '010020000000', 'Паспортный стол 1 района 2 города'),
 (3, '010020000000', 'Паспортный стол 2 района 2 города'),
