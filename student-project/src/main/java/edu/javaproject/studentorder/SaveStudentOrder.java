@@ -13,52 +13,6 @@ import java.util.List;
 public class SaveStudentOrder {
 
     public static void main(String[] args) throws Exception {
-//        List<Street> d = new DictionaryDaoImpl().findStreets("про");
-//        for (Street s : d) {
-//            System.out.println(s.getStreetName());
-//        }
-//
-//        List<PassportOffice> passportOffices
-//                = new DictionaryDaoImpl().findPassportOffices("010020000000");
-//
-//        for (PassportOffice passportOffice: passportOffices) {
-//            System.out.println(passportOffice.getOfficeName());
-//        }
-//
-//        List<RegisterOffice> registerOffices
-//                = new DictionaryDaoImpl().findRegisterOffices("010010000000");
-//
-//        for (RegisterOffice registerOffice: registerOffices) {
-//            System.out.println(registerOffice.getOfficeName());
-//        }
-//
-//        List<CountryArea> countryAreas
-//                = new DictionaryDaoImpl().findAreas("");
-//
-//        for (CountryArea countryArea: countryAreas) {
-//            System.out.println(countryArea.getAreaId() + ": " + countryArea.getAreaName());
-//        }
-//
-//        List<CountryArea> countryAreas1
-//                = new DictionaryDaoImpl().findAreas("020000000000");
-//
-//        for (CountryArea countryArea: countryAreas1) {
-//            System.out.println(countryArea.getAreaId() + ": " + countryArea.getAreaName());
-//        }
-//
-//        List<CountryArea> countryAreas2
-//                = new DictionaryDaoImpl().findAreas("020010000000");
-//
-//        for (CountryArea countryArea: countryAreas2) {
-//            System.out.println(countryArea.getAreaId() + ": " + countryArea.getAreaName());
-//        }
-//
-//        List<CountryArea> countryAreas3
-//                = new DictionaryDaoImpl().findAreas("020010010000");
-//
-//        for (CountryArea countryArea: countryAreas3) {
-//            System.out.println(countryArea.getAreaId() + ": " + countryArea.getAreaName());
-//        }
           StudentOrder studentOrder = buildStudentOrder(10);
           StudentOrderDao dao = new StudentOrderDaoImpl();
           Long id = dao.saveStudentOrder(studentOrder);
