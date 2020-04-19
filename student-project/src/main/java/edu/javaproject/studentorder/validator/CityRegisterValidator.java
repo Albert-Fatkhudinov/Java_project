@@ -61,10 +61,7 @@ public class  CityRegisterValidator {
             error = new AnswerCityRegisterItem.CityError(IN_CODE, ex.getMessage());
         }
 
-        AnswerCityRegisterItem answerCityRegisterItem
-                = new AnswerCityRegisterItem(status, person, error);
-
-        return answerCityRegisterItem;
+        return new AnswerCityRegisterItem(status, person, error);
     }
 
 }

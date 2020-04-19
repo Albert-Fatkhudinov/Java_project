@@ -2,14 +2,12 @@ package edu.javaproject.studentorder.dao;
 
 import edu.javaproject.studentorder.domain.*;
 import edu.javaproject.studentorder.exception.DaoException;
-import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.*;
 
 public class StudentOrderDaoImplTest {
 

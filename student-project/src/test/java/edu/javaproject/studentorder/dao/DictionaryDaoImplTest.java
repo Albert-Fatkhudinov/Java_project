@@ -8,16 +8,22 @@ import edu.javaproject.studentorder.exception.DaoException;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class DictionaryDaoImplTest {
+
+    private static final Logger logger
+            = LoggerFactory.getLogger(DictionaryDao.class);
 
     @BeforeClass
     public static void startUp() throws Exception {
@@ -26,6 +32,8 @@ public class DictionaryDaoImplTest {
 
     @Test
     public void testStreet() throws DaoException {
+        LocalDateTime dateTime = LocalDateTime.now();
+        logger.info("TEST: {}", dateTime);
         List<Street> streets = new DictionaryDaoImpl().findStreets("про");
         Assert.assertEquals(2, streets.size());
     }
