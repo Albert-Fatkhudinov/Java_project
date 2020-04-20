@@ -5,20 +5,17 @@ import edu.javaproject.studentorder.domain.PassportOffice;
 import edu.javaproject.studentorder.domain.RegisterOffice;
 import edu.javaproject.studentorder.domain.Street;
 import edu.javaproject.studentorder.exception.DaoException;
+
+import org.apache.log4j.xml.DOMConfigurator;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
+
 
 public class DictionaryDaoImplTest {
 
@@ -28,6 +25,7 @@ public class DictionaryDaoImplTest {
     @BeforeClass
     public static void startUp() throws Exception {
         DBInit.startUp();
+        DOMConfigurator.configure("src\\test\\resources\\log4j.xml");
     }
 
     @Test

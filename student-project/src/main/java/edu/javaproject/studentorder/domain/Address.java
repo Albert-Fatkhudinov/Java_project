@@ -60,4 +60,15 @@ public class Address {
     public void setExtension(String extension) {
         this.extension = extension;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "postCode='" + postCode + '\'' +
+                ", street=" + street +
+                ", building='" + building + '\'' +
+                ", extension='" + extension + '\'' +
+                ", apartment='" + apartment + '\'' +
+                '}';
+    }
 }

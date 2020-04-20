@@ -6,12 +6,17 @@ import edu.javaproject.studentorder.domain.PassportOffice;
 import edu.javaproject.studentorder.domain.RegisterOffice;
 import edu.javaproject.studentorder.domain.Street;
 import edu.javaproject.studentorder.exception.DaoException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
 public class DictionaryDaoImpl implements DictionaryDao{
+
+    private static final Logger logger
+            = LoggerFactory.getLogger(DictionaryDaoImpl.class);
 
     private static final String GET_STREET = "SELECT street_code, street_name FROM jc_street \n" +
             "WHERE UPPER(street_name) LIKE UPPER(?)";
@@ -43,8 +48,9 @@ public class DictionaryDaoImpl implements DictionaryDao{
                 Street street = new Street(resultSet.getLong("street_code"), resultSet.getString("street_name"));
                 result.add(street);
             }
-        } catch (SQLException ex) {
-            throw new DaoException();
+        } catch (SQLException exception) {
+            logger.error(exception.getMessage(), exception);
+            throw new DaoException(exception);
         }
 
         return result;
@@ -67,8 +73,9 @@ public class DictionaryDaoImpl implements DictionaryDao{
                         resultSet.getString("p_office_name"));
                 result.add(passportOffice);
             }
-        } catch (SQLException ex) {
-            throw new DaoException();
+        } catch (SQLException exception) {
+            logger.error(exception.getMessage(), exception);
+            throw new DaoException(exception);
         }
 
         return result;
@@ -91,8 +98,9 @@ public class DictionaryDaoImpl implements DictionaryDao{
                         resultSet.getString("r_office_name"));
                 result.add(registerOffice);
             }
-        } catch (SQLException ex) {
-            throw new DaoException();
+        } catch (SQLException exception) {
+            logger.error(exception.getMessage(), exception);
+            throw new DaoException(exception);
         }
 
         return result;
@@ -117,8 +125,9 @@ public class DictionaryDaoImpl implements DictionaryDao{
                         resultSet.getString("area_name"));
                 result.add(countryArea);
             }
-        } catch (SQLException ex) {
-            throw new DaoException();
+        } catch (SQLException exception) {
+            logger.error(exception.getMessage(), exception);
+            throw new DaoException(exception);
         }
 
         return result;

@@ -39,4 +39,13 @@ public class RegisterOffice {
     public void setOfficeName(String officeName) {
         this.officeName = officeName;
     }
+
+    @Override
+    public String toString() {
+        return "RegisterOffice{" +
+                "officeId=" + officeId +
+                ", officeAreaId='" + officeAreaId + '\'' +
+                ", officeName='" + officeName + '\'' +
+                '}';
+    }
 }
